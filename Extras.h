@@ -2,9 +2,12 @@
 #define EXTRAS_H
 
 #include <iostream>
+#include "Tamanio.h"
+#include "Cafe.h"
+
 using namespace std;
 
-class extras{
+class extras: Tamanio:{
 
     private:
 
@@ -12,6 +15,7 @@ class extras{
         string mdf; // mateada de fresa
         string mdc; // mateada de chocolate
         string mdv; // mateada de vainilla
+        Cafe cafe;
 
     public:
 
@@ -22,15 +26,17 @@ class extras{
         mdf = "desconocido";
         mdc = "desconocido";
         mdv = "desconocido";
+        
 
     }
 
-    extras(string _cc, string _mdf, string _mdc, string _mdv){ // con parametros
+    extras(string _cc, string _mdf, string _mdc, string _mdv, Cafe _cafe, int grande, int mediano, int chico): Tamanio(_grande, _mediano, _chico){ // con parametros
 
         cc = _cc;
         mdf = _mdf;
         mdc = _mdc;
         mdv = _mdv;
+        cafe = _cafe;
 
     }
 
@@ -46,6 +52,28 @@ class extras{
     string get_mdv(){
         return mdv;
     }
+
+    Cafe get_cafe(){ //metodo getter
+        return cafe;
+    }
+
+
+    void set_cc(string _cc){
+        cc = _cc;
+    }
+    void set_mdf(string _mdf){
+        mdf = _mdf;
+    }
+    void set_mdc(string _mdc){
+        mdc = _mdc;
+    }
+    void set_mdv(string _mdv){
+        mdv = _mdv;
+    }
+    void set_cafe(Cafe _cafe){
+        cafe = _cafe;
+    }
+    
 };
 
 #endif

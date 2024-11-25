@@ -2,9 +2,11 @@
 #define Alchol_H
 
 #include <iostream>
+#include "Tamanio.h"
+
 using namespace std;
 
-class Alchol{
+class Alcohol: public Tamanio{
 
     private:
         string tequila;
@@ -15,7 +17,7 @@ class Alchol{
     public:
 
     // constructores 
-    Alchol (){ //Por Omision
+    Alcohol (): Tamanio(){ //Por Omision
 
         tequila ="desconocido";
         vodka = "desconocido";
@@ -24,7 +26,7 @@ class Alchol{
 
     }
 
-    Alchol(string _teqiula, string _vodka, string _whiskey, string _gin){ // con parametros
+    Alcohol(string _teqiula, string _vodka, string _whiskey, string _gin, int _grande, int _mediano, int _chico): Tamanio(_grande, _mediano, _chico){ // con parametros
 
         tequila = _teqiula;
         vodka = _vodka;
@@ -46,7 +48,19 @@ class Alchol{
         return gin;
     }
 
-    
+    void set_tequila(string _tequila){
+        tequila = _tequila;
+    }
+    void set_vodka(string _vodka){
+        vodka = _vodka;
+    }
+    void set_whiskey(string _whiskey){
+        whiskey = _whiskey;
+    }
+    void set_gin(string _gin){
+        gin = _gin;
+    }
+
 };
 
 #endif

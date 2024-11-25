@@ -2,9 +2,13 @@
 #define NO_Alchol_H
 
 #include <iostream>
+#include "Tamanio.h"
+
+
+
 using namespace std;
 
-class No_alchol{
+class No_alcohol: public Tamanio{
 
     private:
 
@@ -16,7 +20,7 @@ class No_alchol{
     public:
 
     // constructores 
-    No_alchol (){ //Por Omision
+    No_alcohol ():Tamanio(){ //Por Omision
 
         limonada = "desconocido";
         naranjada = "desconocido";
@@ -25,7 +29,7 @@ class No_alchol{
 
     }
 
-    No_alchol(string _limonada, string _naranjada, string _jamaica, string _horchata){ // con parametros
+    No_alcohol(string _limonada, string _naranjada, string _jamaica, string _horchata, int _grande, int _mediano, int _chico): Tamanio(_grande, _mediano, _chico){ // con parametros
 
         limonada = _limonada;
         naranjada = _naranjada;
@@ -46,6 +50,20 @@ class No_alchol{
     string get_horchata(){
         return horchata;
     }
+
+    void set_limonada(string _limonada){
+        limonada = _limonada;
+    }
+    void set_naranjada(string _naranjada){
+        naranjada = _naranjada;
+    }
+    void set_jamaica(string _jamaica){
+        jamaica = _jamaica;
+    }
+    void set_horchata(string _horchata){
+        horchata = _horchata;
+    }
+
 };
 
 #endif

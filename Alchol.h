@@ -1,66 +1,86 @@
+// Alcohol.h
 #ifndef ALCHOL_H
-#define Alchol_H
+#define ALCHOL_H
+#include "Bebida.h"
 
-#include <iostream>
-#include "Tamanio.h"
+// Clase alcohol la cual heredea de la clase padre Bebida
 
-using namespace std;
-
-class Alcohol: public Tamanio{
-
+class Alchol : public Bebida {
     private:
-        string tequila;
-        string vodka;
-        string whiskey;
-        string gin;
-
-    public:
-
-    // constructores 
-    Alcohol (): Tamanio(){ //Por Omision
-
-        tequila ="desconocido";
-        vodka = "desconocido";
-        whiskey = "desconocido";
-        gin = "desconocido";
-
-    }
-
-    Alcohol(string _teqiula, string _vodka, string _whiskey, string _gin, int _grande, int _mediano, int _chico): Tamanio(_grande, _mediano, _chico){ // con parametros
-
-        tequila = _teqiula;
-        vodka = _vodka;
-        whiskey = _whiskey;
-        gin = _gin;
+        float gradoDeAlcohol;
+        string tipoDeAlcohol;
+        string aroma;
         
-    }
+    public:
+        // Constructor por omision
+        Alchol() : Bebida() {
+            gradoDeAlcohol = 0;
+            tipoDeAlcohol = "";
+            aroma = "";
+        }
+        // Constructor con parametos
+        Alchol(float _grado, string _tipo, string _aroma, string _descripcion) : Bebida() {
+            gradoDeAlcohol = _grado;
+            tipoDeAlcohol = _tipo;
+            aroma = _aroma;
+            descripcion = _descripcion;
+        }
+        
+//////////////////////////////////////////////////////////////////////////////////////
 
-    string get_Tequila(){ //metodo getter para tequila
-        return tequila;
-    }
-    string get_Vodka(){ //metodo getter para vodka
-        return vodka;
-    }
-    string get_Whiskey(){ //metodo getter para whiskey
-        return whiskey;
-    }
-    string get_Gin(){ //metodo getter para gin
-        return gin;
-    }
+        // Getters
 
-    void set_tequila(string _tequila){
-        tequila = _tequila;
-    }
-    void set_vodka(string _vodka){
-        vodka = _vodka;
-    }
-    void set_whiskey(string _whiskey){
-        whiskey = _whiskey;
-    }
-    void set_gin(string _gin){
-        gin = _gin;
-    }
+        float get_gradoDeAlcohol() { 
+            return gradoDeAlcohol; 
+            }
+        string get_tipoDeAlcohol() { 
+            return tipoDeAlcohol; 
+            }
+        string get_aroma() { 
+            return aroma; 
+            }
 
+////////////////////////////////////////////////////////////////////////////////////
+
+        // Setters
+
+        void set_gradoDeAlcohol(float _grado) { 
+            gradoDeAlcohol = _grado; 
+            }
+
+        void set_tipoDeAlcohol(string _tipo) { 
+            tipoDeAlcohol = _tipo; 
+            }
+
+        void set_aroma(string _aroma) { 
+            aroma = _aroma; 
+            }
+
+////////////////////////////////////////////////////////////////////////////////////
+
+        // Métodos
+
+        // Funcion que valida si el usuario que esta consumiendo la bebida es mayor de edad
+
+        bool verificarEdadLegal() {
+            int edad;
+            cout << "Por favor, ingrese su edad: ";
+            cin >> edad;
+            return edad >= 18;
+        }
+
+        // Funcion que muestra el Precio base de la bebida 
+
+        float calcularPrecioFinal () override {
+            precio = 14.0;
+            return precio;
+        }
+        
+        // Funcion que muestra tanto el aviso que deberian de tener todos los consumidores de alcohol como el precio de la bebida
+        void mostrarAdvertencias() {
+            cout << "ADVERTENCIA: El consumo excesivo de alcohol es danino para la salud" << endl;
+            cout << "Grado alcoholico (0 - 100 ml): " << gradoDeAlcohol << "%" << endl;
+        }
 };
 
 #endif
